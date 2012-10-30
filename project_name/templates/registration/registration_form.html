@@ -1,0 +1,23 @@
+{% extends "registration/registration_base.html" %}
+
+{% block title %}Register for an account{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+      <div class="span6 offset3">
+        <form action="" method="post" accept-charset="utf-8" class="form-horizontal well">
+          {% csrf_token %}
+          <legend>Create your account to fully enjoy Project.</legend>
+          {% include "_form.html" with submit_value="Send activation email" %}
+          <p>By creating an account, I accept Project's Terms of Service and Privacy Policy.</p>
+        </form>
+        <p>
+            <a href="{% url auth_password_reset %}">Forgot your password?</a>
+        </p>
+      </div>
+    </div>
+</div>
+
+{% endblock %}

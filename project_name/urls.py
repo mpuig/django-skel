@@ -10,6 +10,9 @@ admin.autodiscover()
 # See: https://docs.djangoproject.com/en/dev/topics/http/urls/
 urlpatterns = patterns('',
     url(r'^$', direct_to_template, {'template': 'home.html'}, name='home'),
+    url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}, name='auth_logout'),
+    (r'^accounts/', include('registration.backends.default.urls')),
+
     # Admin panel and documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),

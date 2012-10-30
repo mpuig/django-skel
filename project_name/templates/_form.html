@@ -1,0 +1,23 @@
+<fieldset>
+    {% for field in form %}
+        <div class="control-group{% if field.errors %} error{% endif %}">
+            <label class="control-label" for="">{{ field.label }}</label>
+            <div class="controls">
+
+                {% if field.label == 'Hashtag' %}
+                    <div class="input-prepend">
+                      <span class="add-on">#</span>{{field}}
+                    </div>
+                {% else %}
+                    {{ field }}
+                {% endif %}
+                {% if field.help_text %}<span class="help-inline">{{ field.help_text }}</span>{% endif %}
+                {% if field.errors %}<span class="help-inline">ERROR: {{ field.errors|join:", " }}</span>{% endif %}
+            </div>
+        </div>
+    {% endfor %}
+
+    <div class="form-actions">
+        <input class="btn btn-large btn-primary" type="submit" value="{{ submit_value }}">
+    </div>
+</fieldset>

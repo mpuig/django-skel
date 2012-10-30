@@ -1,0 +1,31 @@
+{% extends "registration/registration_base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+      <div class="span6 offset3">
+        <form action="" method="post" accept-charset="utf-8" class="form-horizontal well">
+          {% csrf_token %}
+          <legend>Login</legend>
+            <input type="hidden" name="next" value="{{ next }}" />
+            {% include "_form.html" with submit_value="Login" %}
+        </form>
+        <p>
+            <a href="{% url auth_password_reset %}">Forgot your password?</a> -   
+            <a href="{% url registration_register %}">Need an account</a>?
+        </p>
+      </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extrajs %}
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('#id_username').focus();
+    });
+  </script>
+{% endblock extrajs %}
