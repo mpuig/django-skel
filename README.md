@@ -46,7 +46,7 @@ django-skel currently supports Django 1.4. To create a new django-skel base
 project, run the following command (this assumes you have Django 1.4 installed
 already):
 
-    $ django-admin.py startproject --template=https://github.com/rdegges/django-skel/zipball/master woot
+    $ django-admin.py startproject --template=https://github.com/mpuig/django-skel/zipball/master woot
     $ heroku config:add DJANGO_SETTINGS_MODULE=myproject.settings.prod
 
 
@@ -64,3 +64,30 @@ to a value which is generated mainly for development environment.
 
 This setup allows you to easily keep your site in a public repo if you so 
 wish without causing opening a route to attack your Django passwords.
+
+
+Running Your Site Locally
+=========================
+
+To install the local dependencies (that you'll need to run your site locally),
+run the following command::
+
+    $ pip install -r reqs/dev.txt
+    ...
+
+Before you start coding, let's bootstrap our SQLite database (for local
+development), and test our the Django admin panel just to make sure
+everything's working::
+
+    $ python manage.py syncdb
+    ...
+    $ python manage.py migrate
+    ...
+    $ python manage.py runserver
+    ...
+
+Assuming everything's working, you should now be able to visit
+http://localhost:8000/admin/ in your web browser, and log in.
+
+The ``syncdb`` command here just initializes our database, and the ``migrate``
+command applies our South migrations.
